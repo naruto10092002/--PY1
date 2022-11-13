@@ -1,11 +1,9 @@
-DEFAULT_COUNT = 0
-
-
+DEFAULT_COUNT = 0                                       # Список и словарь копируются, поскольку это изменяемые типы,
+                                                        # которые передаются по ссылке,
+                                                        # поэтому я оставил соответствующие строки в коде
 def get_count_char(str_):
     str_ = str_[:]                                      # Копируем строку
     new_str = str_.lower()                              # Приводим к нижнему регистру
-    list_words = new_str.split()                        # Разбиваем строку на отдельные слова
-    new_str = "".join(list_words)                       # Соединяем слова обратно, но без нечитаемых символов
     dict_ = dict()                                      # Создаём пустой словарь
 
     for i in new_str:                                   # Идём по каждому символу из строки
@@ -19,8 +17,7 @@ def get_count_char(str_):
 def get_percentage(dict_):                              # Требуемая в п.5 функция
     list_items = list(dict_.items())
     new_dict = dict(list_items)                         # Копируем словарь
-    dict_values = new_dict.values()
-    total_symbols = sum(dict_values)                    # Находим суммарное число буквенных символов
+    total_symbols = sum(new_dict.values())              # Находим суммарное число буквенных символов
 
     for i in new_dict:
         new_dict[i] /= total_symbols                    # Выражаем частоту появления в долях единицы,...
